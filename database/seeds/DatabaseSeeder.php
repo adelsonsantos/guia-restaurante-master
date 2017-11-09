@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory(\App\User::class)->create([
-            'email'=>'erik.figueiredo@gmail.com',
+            'email'    => 'adelson.art@hotmail.com',
             'password' => app('hash')->make('123456')
         ]);
     }

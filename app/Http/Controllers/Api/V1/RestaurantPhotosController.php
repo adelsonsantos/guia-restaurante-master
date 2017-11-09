@@ -30,6 +30,7 @@ class RestaurantPhotosController extends Controller
         $results =  $this->model
             ->where('restaurant_id', $id)
             ->get();
+
         
             return response()->json($results);
     }

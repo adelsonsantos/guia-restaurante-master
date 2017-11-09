@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 try {
@@ -94,7 +95,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
-$app->register(Barryvdh\Cors\ServiceProvider::class);
+//$app->register(Barryvdh\Cors\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -107,11 +108,11 @@ $app->register(Barryvdh\Cors\ServiceProvider::class);
 |
 */
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+/*$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/web.php';
 });
 
 $app->configure('filesystems');
-$app->configure('cors');
+$app->configure('cors');*/
 
 return $app;

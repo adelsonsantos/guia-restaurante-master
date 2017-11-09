@@ -18,7 +18,7 @@ $app->get('/', function () use ($app) {
     //return view('teste');
 });
 
-$app->group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'], function () use ($app) {
+$app->group(['prefix' => 'api/v1', 'namespace' => 'Api\V1', 'middleware'=>['auth']], function () use ($app) {
     $app->get('restaurants/by-address', 'RestaurantsController@getByAddress');
     $app->get('restaurants/by-coords', 'RestaurantsController@getByCoords');
     $app->post('restaurants/vote', 'VotesController@store');
@@ -34,9 +34,12 @@ $app->group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'], function () use ($a
     $app->post('auth/register', 'AuthController@register');
 });
 
-$app->group(['prefix' => 'api/v1', 'namespace' => 'Api\V1'/*, 'middleware'=>['auth']*/], function () use ($app) {
+$app->group(['prefix' => 'api/v1', 'namespace' => 'Api\V1', 'middleware'=>['auth']], function () use ($app) {
     $app->get('restaurants', 'RestaurantsController@index');
     $app->post('restaurants', 'RestaurantsController@store');
+    $app->get('/key', function() {
+        return str_random(32);
+    });
     $app->put('restaurants/{id:[0-9]+}', 'RestaurantsController@update');
     $app->post('restaurants/{id:[0-9]+}', 'RestaurantsController@update');
     $app->delete('restaurants/{id:[0-9]+}', 'RestaurantsController@destroy');

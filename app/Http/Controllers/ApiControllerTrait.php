@@ -14,16 +14,14 @@ trait ApiControllerTrait
      * ?limit=15
      * ?order=created_at,desc
      * ?where[id]=2
-     * ?like[name]=erik
+     * ?like[name]=adelson
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(/*Request $request*/)
+    public function index(Request $request)
     {
-        $results = $this->model->paginate();
-        return response()->json($results);
-/*        $data = $request->all();
+        $data = $request->all();
 
         $limit = $data['limit'] ?? 20;
 
@@ -56,7 +54,7 @@ trait ApiControllerTrait
             ->with($this->relationships())
             ->paginate($limit);
 
-        return response()->json($results);*/
+        return response()->json($results);
     }
 
     public function show($id)
